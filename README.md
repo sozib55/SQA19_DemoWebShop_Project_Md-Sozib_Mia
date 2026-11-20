@@ -63,7 +63,7 @@ Install the following tools:
 Clone the repository:
 
 ```bash
-git clone YOUR_GITHUB_REPOSITORY_URL
+git clone https://github.com/sozib55/SQA19_DemoWebShop_Project_Md-Sozib_Mia 
 ```
 
 Navigate to the project:
@@ -184,4 +184,4 @@ Generated reports are excluded from Git using `.gitignore`.
 
 SQA Automation Testing Project
 
-**GitHub Repository:** YOUR_GITHUB_REPOSITORY_URL
+**GitHub Repository:** https://github.com/sozib55/SQA19_DemoWebShop_Project_Md-Sozib_Mia

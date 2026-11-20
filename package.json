@@ -11,8 +11,8 @@
     "test:q3": "playwright test tests/product-search-checkout.spec.js",
     "test:ui": "playwright test",
     "test:api": "newman run \"api-tests/Demo Web Shop API Testing.postman_collection.json\" -r cli,htmlextra --reporter-htmlextra-export \"reports/api-test-report.html\"",
-    "report:allure": "set \"JAVA_HOME=C:\\Program Files\\Eclipse Adoptium\\jdk-21.0.13.10002-hotspot\" && set \"PATH=C:\\Program Files\\Eclipse Adoptium\\jdk-21.0.13.10002-hotspot\\bin;%PATH%\" && allure generate allure-results --clean -o allure-report",
-    "test:all": "npm run test:ui && npm run report:allure && npm run test:api"
+    "report:allure": "allure generate allure-results --clean -o allure-report",
+    "test:all": "node -e \"require('fs').rmSync('allure-results',{recursive:true,force:true})\" && npm run test:ui && npm run report:allure && npm run test:api"
   },
   "keywords": [
     "SQA",
@@ -22,7 +22,7 @@
     "Newman",
     "Allure"
   ],
-  "author": "",
+  "author": "Sozib Mia",
   "license": "ISC",
   "type": "commonjs",
   "devDependencies": {

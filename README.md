@@ -4,14 +4,14 @@
 
 This project automates the Demo Web Shop application using Playwright and performs REST API testing using Postman and Newman.
 
-The project covers three independent UI automation scenarios and API validation using JSONPlaceholder.
+The project includes three UI automation scenarios and API testing with JSONPlaceholder.
 
 ## Tech Stack
 
-- Node.js
+- Node.js and npm
 - JavaScript
 - Playwright
-- Postman
+- Postman Desktop
 - Newman
 - Newman HTML Extra Reporter
 - Allure Report
@@ -20,12 +20,16 @@ The project covers three independent UI automation scenarios and API validation 
 ## Project Structure
 
 ```text
-SQA19_DemoWebShop_Project/
+SQA19_DemoWebShop_Project_Md-Sozib_Mia/
 │
 ├── tests/
 │   ├── invalid-login.spec.js
 │   ├── register-add-to-cart.spec.js
 │   └── product-search-checkout.spec.js
+│
+├── pages/
+│   ├── LoginPage.js
+│   └── RegisterPage.js
 │
 ├── api-tests/
 │   └── Demo Web Shop API Testing.postman_collection.json
@@ -33,8 +37,6 @@ SQA19_DemoWebShop_Project/
 ├── reports/
 │   └── api-test-report.html
 │
-├── pages/
-├── data/
 ├── playwright.config.js
 ├── package.json
 ├── package-lock.json
@@ -44,9 +46,9 @@ SQA19_DemoWebShop_Project/
 
 ## Application Under Test
 
-Website: https://demowebshop.tricentis.com
+**UI Application:** https://demowebshop.tricentis.com
 
-API Base URL: https://jsonplaceholder.typicode.com
+**API Base URL:** https://jsonplaceholder.typicode.com
 
 ## Prerequisites
 
@@ -58,30 +60,42 @@ Install the following tools:
 - Postman Desktop
 - Java JDK 21 (required for Allure report generation)
 
-## Installation
+## Installation and Setup
 
-Clone the repository:
-
-```bash
-git clone https://github.com/sozib55/SQA19_DemoWebShop_Project_Md-Sozib_Mia 
-```
-
-Navigate to the project:
+### 1. Clone the Repository
 
 ```bash
-cd SQA19_DemoWebShop_Project
+git clone https://github.com/sozib55/SQA19_DemoWebShop_Project_Md-Sozib_Mia.git
 ```
 
-Install dependencies:
+### 2. Navigate to the Project Folder
+
+```bash
+cd SQA19_DemoWebShop_Project_Md-Sozib_Mia
+```
+
+### 3. Install Dependencies
 
 ```bash
 npm install
 ```
 
-Install Playwright Chromium:
+### 4. Install Playwright Chromium
 
 ```bash
 npx playwright install chromium
+```
+
+### 5. Configure Java for Allure
+
+Install Java JDK 21 and configure the `JAVA_HOME` environment variable to point to your JDK installation directory.
+
+Add the JDK `bin` directory to your system `Path`.
+
+Verify the Java installation:
+
+```bash
+java -version
 ```
 
 ## UI Automation Test Execution
@@ -110,52 +124,62 @@ Run all UI tests:
 npm run test:ui
 ```
 
+The Playwright configuration uses Chromium and one worker for sequential test execution.
+
 ## API Testing with Postman and Newman
 
-The Postman collection is located inside the `api-tests` folder.
+The Postman collection is located in the `api-tests` folder.
 
-The collection validates:
+The collection covers:
 
 1. GET all users.
 2. Validate response status and user information.
 3. Extract a dynamic User ID.
 4. GET a single user using the extracted ID.
 5. PUT updated user information.
-6. Validate updated name, email, company name, ID and phone number.
+6. Validate the updated name, email, company name, ID and phone number.
 
-Run API tests:
+Run API tests using Newman:
 
 ```bash
 npm run test:api
 ```
 
-The Newman HTML report is generated at:
+The Newman HTML Extra report is generated at:
 
 ```text
 reports/api-test-report.html
 ```
 
-## Allure Report
+**Note:** JSONPlaceholder is a demo API. PUT requests return simulated update responses and do not permanently modify the server's stored data.
 
-Generate the Allure report:
+## Test Reports
 
-```bash
-npm run report:allure
-```
+### Playwright HTML Report
 
-Open the report:
-
-```bash
-npx allure open allure-report
-```
-
-Playwright HTML report:
+Open the latest Playwright HTML report:
 
 ```bash
 npx playwright show-report
 ```
 
-## Run Complete Test Suite
+### Allure Report
+
+Generate the Allure report after running the UI tests:
+
+```bash
+npm run report:allure
+```
+
+Open the Allure report:
+
+```bash
+npx allure open allure-report
+```
+
+The Allure report includes test results and available test attachments.
+
+## Run the Complete Test Suite
 
 Run UI tests, generate the Allure report and execute API tests:
 
@@ -163,25 +187,32 @@ Run UI tests, generate the Allure report and execute API tests:
 npm run test:all
 ```
 
+This command clears previous Allure results before running the complete test suite.
+
 ## Git Branches
 
-The project uses separate feature branches for each UI scenario:
+Separate feature branches were used for the UI automation scenarios:
 
 - `feature/q1-invalid-login`
 - `feature/q2-register-add-to-cart`
 - `feature/q3-product-search-checkout`
 - `main`
 
-## Reports
+The feature branches were merged into the main branch.
+
+## Reports and Generated Files
+
+The project generates the following reports:
 
 - Playwright HTML Report
-- Allure Report with test attachments
+- Allure Report
 - Newman HTML Extra API Report
 
-Generated reports are excluded from Git using `.gitignore`.
+Playwright and Allure generated report folders are excluded from Git through `.gitignore`. The Newman HTML report is available in the `reports` folder.
 
 ## Author
 
-SQA Automation Testing Project
+**Sozib Mia**
 
-**GitHub Repository:** https://github.com/sozib55/SQA19_DemoWebShop_Project_Md-Sozib_Mia
+**GitHub Repository:**  
+https://github.com/sozib55/SQA19_DemoWebShop_Project_Md-Sozib_Mia

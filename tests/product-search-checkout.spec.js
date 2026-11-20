@@ -24,7 +24,11 @@ test('Q3 - Product Search and Complete Checkout', async ({ page }) => {
     await page.locator('input.button-1.search-box-button').click();
 
     const product = page.locator('.product-item .product-title a').first();
+
     await expect(product).toBeVisible();
+
+    // Verify search result matches the search keyword
+    await expect(product).toContainText(/computer/i);
 
     const productName = (await product.innerText()).trim();
     await product.click();
@@ -102,5 +106,21 @@ test('Q3 - Product Search and Complete Checkout', async ({ page }) => {
 
     await expect(page).toHaveURL(/orderdetails/);
 
+    // Verify order details page
+    const orderDetails = page.locator('.order-details-page');
+
+    await expect(orderDetails).toBeVisible();
+    await expect(orderDetails).toContainText(productName);
+
+    // Verify ordered quantity
+    const orderedProductRow = orderDetails
+        .locator('.data-table tr')
+        .filter({ hasText: productName });
+
+    await expect(orderedProductRow).toBeVisible();
+    await expect(orderedProductRow.locator('.quantity')).toContainText('2');
+
+    console.log('Verified Product:', productName);
+    console.log('Verified Quantity: 2');
     console.log('Q3 Checkout Completed Successfully');
 });

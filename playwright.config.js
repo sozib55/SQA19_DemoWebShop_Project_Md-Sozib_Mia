@@ -1,3 +1,4 @@
+
 const { defineConfig } = require('@playwright/test');
 
 module.exports = defineConfig({
@@ -7,14 +8,15 @@ module.exports = defineConfig({
 
     reporter: [
         ['list'],
-        ['html', { outputFolder: 'playwright-report', open: 'never' }]
+        ['html', { outputFolder: 'playwright-report', open: 'never' }],
+        ['allure-playwright']
     ],
 
     use: {
         baseURL: 'https://demowebshop.tricentis.com',
         browserName: 'chromium',
         headless: true,
-        screenshot: 'only-on-failure',
+        screenshot: 'on',
         trace: 'on-first-retry'
     }
 });
